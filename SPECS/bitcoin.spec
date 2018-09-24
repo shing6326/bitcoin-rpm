@@ -13,13 +13,15 @@
 %endif
 
 Name:    bitcoin
-Version: 0.16.2
+Version: 0.16.3
 Release: 1%{?dist}
 Summary: Peer to Peer Cryptographic Currency
 Group:   Applications/System
 License: MIT
 URL:     https://bitcoincore.org/
-Source0: https://bitcoincore.org/bin/%{name}-core-%{version}/%{name}-%{version}.tar.gz
+Source0: https://github.com/bitcoin/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source1: https://raw.githubusercontent.com/bitcoin-core/packaging/3b394e8044cf67cd76aa47b84487aa2f3f3eed81/debian/bitcoin-qt.desktop
+Source2: https://raw.githubusercontent.com/bitcoin-core/packaging/3b394e8044cf67cd76aa47b84487aa2f3f3eed81/debian/examples/bitcoin.conf
 
 BuildRequires: gcc-c++
 BuildRequires: libtool
@@ -137,14 +139,14 @@ install -p share/rpcauth/rpcauth.py %{buildroot}/%{_datadir}/bitcoin/rpcauth.py
 mkdir -p %{buildroot}%{_sharedstatedir}/bitcoin
 
 mkdir -p %{buildroot}%{_sysconfdir}
-install -p contrib/debian/examples/bitcoin.conf %{buildroot}%{_sysconfdir}/bitcoin.conf
+install -p %{SOURCE2} %{buildroot}%{_sysconfdir}/bitcoin.conf
 
 mkdir -p %{buildroot}%{_unitdir}
 install -p contrib/init/bitcoind.service %{buildroot}%{_unitdir}/bitcoind.service
 sed -i -e 's|-conf=/etc/bitcoin/bitcoin\.conf|-conf=/etc/bitcoin.conf -datadir=/var/lib/bitcoin|g' %{buildroot}%{_unitdir}/bitcoind.service
 
 mkdir -p %{buildroot}%{_datadir}/applications
-desktop-file-install contrib/debian/bitcoin-qt.desktop %{buildroot}%{_datadir}/applications/bitcoin-qt.desktop
+desktop-file-install %{SOURCE1} %{buildroot}%{_datadir}/applications/bitcoin-qt.desktop
 %endif
 
 mkdir -p %{buildroot}%{_sysconfdir}/bash_completion.d
@@ -228,6 +230,9 @@ rm -rf %{buildroot}
 %attr(0644,root,root) %{_sysconfdir}/bash_completion.d/bitcoind.bash-completion
 
 %changelog
+* Sat Sep 22 2018 Billy Chan <billy@mona.co> - 0.16.3-1
+- bump release
+
 * Tue Sep 04 2018 Billy Chan <billy@mona.co> - 0.16.2-1
 - bump release
 
