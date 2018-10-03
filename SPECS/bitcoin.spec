@@ -13,7 +13,7 @@
 %endif
 
 Name:    bitcoin
-Version: 0.16.3
+Version: 0.17.0
 Release: 1%{?dist}
 Summary: Peer to Peer Cryptographic Currency
 Group:   Applications/System
@@ -230,6 +230,9 @@ rm -rf %{buildroot}
 %attr(0644,root,root) %{_sysconfdir}/bash_completion.d/bitcoind.bash-completion
 
 %changelog
+* Wed Oct 03 2018 Billy Chan <billy@mona.co> - 0.17.0-1
+- bump release
+
 * Sat Sep 22 2018 Billy Chan <billy@mona.co> - 0.16.3-1
 - bump release
 
