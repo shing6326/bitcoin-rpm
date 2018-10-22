@@ -144,6 +144,8 @@ install -p %{SOURCE2} %{buildroot}%{_sysconfdir}/bitcoin.conf
 mkdir -p %{buildroot}%{_unitdir}
 install -p contrib/init/bitcoind.service %{buildroot}%{_unitdir}/bitcoind.service
 sed -i -e 's|-conf=/etc/bitcoin/bitcoin\.conf|-conf=/etc/bitcoin.conf -datadir=/var/lib/bitcoin|g' %{buildroot}%{_unitdir}/bitcoind.service
+# disable MemoryDenyWriteExecute which is only supported on systemd >= 231
+sed -i -e 's|^\(MemoryDenyWriteExecute.*\)|#\1|g' %{buildroot}%{_unitdir}/bitcoind.service
 
 mkdir -p %{buildroot}%{_datadir}/applications
 desktop-file-install %{SOURCE1} %{buildroot}%{_datadir}/applications/bitcoin-qt.desktop
