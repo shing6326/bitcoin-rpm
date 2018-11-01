@@ -13,7 +13,7 @@
 %endif
 
 Name:    bitcoin
-Version: 0.17.0
+Version: 0.17.0.1
 Release: 1%{?dist}
 Summary: Peer to Peer Cryptographic Currency
 Group:   Applications/System
@@ -232,75 +232,3 @@ rm -rf %{buildroot}
 %attr(0644,root,root) %{_sysconfdir}/bash_completion.d/bitcoind.bash-completion
 
 %changelog
-* Wed Oct 03 2018 Billy Chan <billy@mona.co> - 0.17.0-1
-- bump release
-
-* Sat Sep 22 2018 Billy Chan <billy@mona.co> - 0.16.3-1
-- bump release
-
-* Tue Sep 04 2018 Billy Chan <billy@mona.co> - 0.16.2-1
-- bump release
-
-* Mon Feb 26 2018 Evan Klitzke <evan@eklitzke.org> - 0.16.0-3
-- split out bitcoin-cli package
-
-* Fri Feb 23 2018 Evan Klitzke <evan@eklitzke.org> - 0.16.0-2
-- Add BuildRequires: systemd for F28/Rawhide
-
-* Fri Feb 23 2018 Evan Klitzke <evan@eklitzke.org> - 0.16.0-1
-- Bump for official 0.16.0 release
-
-* Fri Feb 16 2018 Evan Klitzke <evan@eklitzke.org> - 0.16.0rc4-1
-- rebuild for rc4
-
-* Sat Feb 10 2018 Evan Klitzke <evan@eklitzke.org> - 0.16.0rc3-2
-- Fix for GitHub tarballs (not created with "make dist")
-
-* Sat Feb 10 2018 Evan Klitzke <evan@eklitzke.org> - 0.16.0rc3-1
-- rebuilt for rc3
-
-* Mon Feb 05 2018 Evan Klitzke <evan@eklitzke.org> - 0.16.0rc2-2
-- rebuilt
-
-* Wed Jan 31 2018 Evan Klitzke <evan@eklitzke.org> - 0.16.0rc1-1
-- rebuilt for 0.16
-
-* Wed Dec 13 2017 Evan Klitzke <evan@eklitzke.org> - 0.15.1-13
-- Configure systemd to use bitcoin-cli stop to shutdown bitcoind
-
-* Wed Nov 29 2017 Evan Klitzke <evan@eklitzke.org>
-- Add .desktop file for bitcoin-qt testnet
-
-* Mon Nov 20 2017 Evan Klitzke <evan@eklitzke.org> - 0.15.1-11
-- Mark /etc/bitcoin.conf as a (noreplace) config file
-
-* Sun Nov 19 2017 Evan Klitzke <evan@eklitzke.org> - 0.15.1-10
-- Just use /etc/bitcoin.conf, a whole new dir seems unnecessary
-
-* Sun Nov 19 2017 Evan Klitzke <evan@eklitzke.org> - 0.15.1-9
-- Remove bitcoin-cli package (move those to bitcoind)
-- Set up a real system service for bitcoind
-
-* Wed Nov 15 2017 Evan Klitzke <evan@eklitzke.org> - 0.15.1-8
-- Remove bench_bitcoin from the bitcoin-cli package.
-
-* Wed Nov 15 2017 Evan Klitzke <evan@eklitzke.org> - 0.15.1-7
-- bitcoin-daemon -> bitcoind, bitcoin-utils -> bitcoin-cli
-
-* Wed Nov 15 2017 Evan Klitzke <evan@eklitzke.org> - 0.15.1-6
-- Fix the desktop file.
-
-* Wed Nov 15 2017 Evan Klitzke <evan@eklitzke.org> - 0.15.1-5
-- Don't depend on SELinux stuff, rename the .desktop file
-
-* Wed Nov 15 2017 Evan Klitzke <evan@eklitzke.org> - 0.15.1-4
-- Split into subpackages.
-
-* Wed Nov 15 2017 Evan Klitzke <evan@eklitzke.org> - 0.15.1-3
-- Fix test_bitcoin logic, allow building without wallet.
-
-* Wed Nov 15 2017 Evan Klitzke <evan@eklitzke.org> - 0.15.1-2
-- Remove test_bitcoin executable from bindir.
-
-* Tue Nov 14 2017 Evan Klitzke <evan@eklitzke.org> - 0.15.1-1
-- Initial build.
