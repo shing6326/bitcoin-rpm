@@ -13,7 +13,7 @@
 %endif
 
 Name:    bitcoin
-Version: 0.17.0.1
+Version: 0.17.1
 Release: 1%{?dist}
 Summary: Peer to Peer Cryptographic Currency
 Group:   Applications/System
